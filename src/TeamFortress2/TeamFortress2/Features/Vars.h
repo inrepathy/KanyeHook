@@ -612,6 +612,7 @@ namespace Vars
 		inline CVar<int> SoundBlock{ 0 };
 		inline CVar<bool> ChatFlags{ false };
 		inline CVar<int> MedievalChat{ 0 };
+		inline CVar<bool> Watermark{ true };
 		inline CVar<bool> AutoAcceptItemDrops{ false };
 		inline CVar<bool> RegionChanger{ false };
 		inline CVar<int> RegionsAllowed{ 0 };
@@ -619,6 +620,7 @@ namespace Vars
 		inline CVar<bool> JoinSpam{ false };
 		inline CVar<bool> AntiVAC{ false };
 		inline CVar<bool> InstantAccept{ false };
+
 
 		namespace Followbot
 		{
