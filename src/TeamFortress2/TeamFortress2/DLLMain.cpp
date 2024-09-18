@@ -12,6 +12,14 @@
 #include "Features/Commands/Commands.h"
 #include "Features/CritHack/CritHack.h"
 
+
+// i didnt know i needed these so i recoded it like 5 times before i found out about this lo..
+#include <iostream>  
+#include <fstream>   
+#include <windows.h> 
+#include <thread>    
+#include <chrono>    
+
 #include "SDK/Includes/Enums.h"
 #include "Utils/MinHook/MinHook.h"
 
@@ -125,19 +133,49 @@ DWORD WINAPI MainThread(LPVOID lpParam)
 }
 
 
+
+
 BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
 {
 	if (fdwReason == DLL_PROCESS_ATTACH)
-	{	
+	{
+		// kill pe header.
 		Utils::RemovePEH(hinstDLL);
+
+		AllocConsole();
+
+		SetConsoleTitle(TEXT("kanyehook -- debugger"));
+
+		// gay faggot shit.
+		freopen("CONOUT$", "w", stdout);
+		freopen("CONIN$", "r", stdin);
+		freopen("CONOUT$", "w", stderr);
+
+		std::cout << "[+] attaching hooks.." << std::endl;
+
+		std::this_thread::sleep_for(std::chrono::milliseconds(20 + (rand() % 181)));  // this might not work.
+
+		std::cout << "[+] attaching DLL.." << std::endl;
+
+		std::this_thread::sleep_for(std::chrono::milliseconds(20 + (rand() % 181)));
+
+		std::cout << "[+] cheat injected!" << std::endl;
+
+
+		// kill console if the cheat is uninjected. (probably exits game too i fear :nailbite:)
 		if (const auto hMainThread = WinAPI::CreateThread(nullptr, 0, MainThread, hinstDLL, 0, nullptr))
 		{
 			WinAPI::CloseHandle(hMainThread);
 		}
 	}
+	else if (fdwReason == DLL_PROCESS_DETACH)
+	{
+		FreeConsole();
+	}
 
 	return TRUE;
 }
+
 
 //https://www.unknowncheats.me/forum/c-and-c-/63409-write-mindump-crash.html
 
