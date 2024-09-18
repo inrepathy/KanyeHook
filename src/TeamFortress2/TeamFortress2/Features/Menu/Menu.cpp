@@ -356,6 +356,8 @@ void CMenu::MenuVisuals()
 				WSlider("Side", &Vars::Visuals::ThirdpersonRight.Value, -40, 40, "%d");
 				WSlider("Up/Down", &Vars::Visuals::ThirdpersonUp.Value, -40, 40, "%d");
 				WToggle("Bypass sv_pure", &Vars::Misc::BypassPure.Value); HelpMarker("Allows you to load any custom files, even if disallowed by the sv_pure setting");
+				WToggle("Watermark", &Vars::Misc::Watermark.Value);  HelpMarker("Watermark for the cheat");
+				//WToggle("Bypass sv_pure", &Vars::Misc::BypassPure.Value); HelpMarker("Allows you to load any custom files, even if disallowed by the sv_pure setting");
 			
 			}EndChild();
 
