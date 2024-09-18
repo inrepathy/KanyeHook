@@ -75,13 +75,18 @@ MAKE_HOOK(EngineVGui_Paint, Utils::GetVFuncPtr(I::EngineVGui, 14), void, __fastc
 					});
 			}
 
-			if (I::EngineVGui->IsGameUIVisible())
-			{
-				if (!I::EngineClient->IsInGame())
+			if (Vars::Misc::Watermark.Value) {
+
+				if (I::EngineVGui->IsGameUIVisible())
 				{
-					g_Draw.String(FONT_MENU, 5, g_ScreenSize.h - 5 - Vars::Fonts::FONT_MENU::nTall.Value, { 255, 255, 255, 255 }, ALIGN_DEFAULT, "Build: " __DATE__);
+					if (!I::EngineClient->IsInGame())
+					{
+						g_Draw.String(FONT_MENU, 5, g_ScreenSize.h - 5 - Vars::Fonts::FONT_MENU::nTall.Value, { 255, 255, 255, 255 }, ALIGN_DEFAULT, "kanyehook -- t.me/inrepathy");
+					}
 				}
+
 			}
+
 
 			if (CBaseEntity* pLocal = g_EntityCache.GetLocal())
 			{
