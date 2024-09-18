@@ -77,7 +77,7 @@ MAKE_HOOK(EngineVGui_Paint, Utils::GetVFuncPtr(I::EngineVGui, 14), void, __fastc
 
 			if (Vars::Misc::Watermark.Value) {
 
-				if (I::EngineVGui->IsGameUIVisible())
+				if (!I::EngineVGui->IsGameUIVisible()) // maybe looks better? it doesnt render in menu.. probably looks better then!
 				{
 					if (I::EngineClient->IsInGame()) // fuck you fourteen for putting ! there u nigger
 					{
